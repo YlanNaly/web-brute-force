@@ -1,4 +1,5 @@
 import asyncio
+import uuid
 import aiohttp
 import math
 import multiprocessing
@@ -42,7 +43,7 @@ async def find_existing_routes(routes, workers_count):
                                 available_routes += f"{route}?{r}=? \n"  # Ajouter la requête à la chaîne
 
     print("proc number: %s" % workers_count)
-    filename = str(available_routes) + ".txt"  # Générer un nom de fichier unique
+    filename = str(uuid.uuid4()) + ".txt"  # Générer un nom de fichier unique
     directory = "routes_availables"  # Chemin du répertoire
     if not os.path.exists(directory):  # Vérifier si le répertoire n'existe pas
         os.makedirs(directory)  # Créer le répertoire s'il n'existe pas
